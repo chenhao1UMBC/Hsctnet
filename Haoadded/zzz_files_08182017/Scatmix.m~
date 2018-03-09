@@ -1,0 +1,131 @@
+% Scattering Coefficents for Mixed data
+
+clc
+clear
+close all
+tic
+run('addpath_scatnet.m')
+mkdir('/home/chenhao/Matlab/LMData2')
+addpath(genpath('/home/chenhao/Matlab/LMData2'));
+
+% src = gtzan_src('..\genres');
+src = gtzan_src('Haoadded/haomix390_1');
+N = 2e7;%5*2^17
+global G_N
+SNR=20;
+G_N=N;
+
+fparam.filter_type = {'gabor_1d','morlet_1d'};
+fparam.Q = [8 2];
+fparam.J = T_to_J(N/100,fparam);
+options.M = 2;
+
+%% scattering network
+load('fitlers_q82n2e7')
+if ~exist('filters')
+    [Wop,fitlers] = wavelet_factory_1d(N, fparam, options);
+end
+feature_fun = {@(x)(format_scat(log_scat(renorm_scat(scat(x,Wop)))))};
+
+opt=struct();
+opt.parallel=1;
+opt.mix=1;%%%%%%%%%%%%%%%%%%
+% 'ambient','ble','bluetooth','fhss1_','fhss2_','wifi','wifi20mhz','wifi40mhz','zigbee'
+% cn for the mixed signal, class name, =[1:9]
+opt.cn=[2,3];
+db = Hprepare_database(src,feature_fun,opt,SNR);
+db.features = single(db.features);
+db.cn=opt.cn;
+nm1=['mix',num2str(opt.cn),'db390_9classqn22_positive_renorm_snr', num2str(SNR)];
+save(nm1,'db')
+
+db2 = Hprepare_database2(src,feature_fun,opt,SNR);
+db2.features = single(db2.features);
+nm2=['mix',num2str(opt.cn),'db390_9class_negative_renorm_snr', num2str(SNR)];
+save(nm2,'db2')
+% {
+%%
+clear opt
+opt=struct();
+opt.parallel=1;
+opt.mix=1;%%%%%%%%%%%%%%%%%%
+opt.cn=[2,9];
+db = Hprepare_database(src,feature_fun,opt,SNR);
+db.features = single(db.features);
+db.cn=opt.cn;
+nm1=['mix',num2str(opt.cn),'db390_9classqn22_positive_renorm_snr', num2str(SNR)];
+save(nm1,'db')
+
+db2 = Hprepare_database2(src,feature_fun,opt,SNR);
+db2.features = single(db2.features);
+nm2=['mix',num2str(opt.cn),'db390_9class_negative_renorm_snr', num2str(SNR)];
+save(nm2,'db2')
+%%
+clear opt
+opt=struct();
+opt.parallel=1;
+opt.mix=1;%%%%%%%%%%%%%%%%%%
+opt.cn=[2,4];
+db = Hprepare_database(src,feature_fun,opt,SNR);
+db.features = single(db.features);
+db.cn=opt.cn;
+nm1=['mix',num2str(opt.cn),'db390_9classqn22_positive_renorm_snr', num2str(SNR)];
+save(nm1,'db')
+
+db2 = Hprepare_database2(src,feature_fun,opt,SNR);
+db2.features = single(db2.features);
+nm2=['mix',num2str(opt.cn),'db390_9class_negative_renorm_snr', num2str(SNR)];
+save(nm2,'db2')
+
+%%
+clear opt
+opt=struct();
+opt.parallel=1;
+opt.mix=1;%%%%%%%%%%%%%%%%%%
+opt.cn=[3,4];
+db = Hprepare_database(src,feature_fun,opt,SNR);
+db.features = single(db.features);
+db.cn=opt.cn;
+nm1=['mix',num2str(opt.cn),'db390_9classqn22_positive_renorm_snr', num2str(SNR)];
+save(nm1,'db')
+
+db2 = Hprepare_database2(src,feature_fun,opt,SNR);
+db2.features = single(db2.features);
+nm2=['mix',num2str(opt.cn),'db390_9class_negative_renorm_snr', num2str(SNR)];
+save(nm2,'db2')
+
+%%
+clear opt
+opt=struct();
+opt.parallel=1;
+opt.mix=1;%%%%%%%%%%%%%%%%%%
+opt.cn=[3,9];
+db = Hprepare_database(src,feature_fun,opt,SNR);
+db.features = single(db.features);
+db.cn=opt.cn;
+nm1=['mix',num2str(opt.cn),'db390_9classqn22_positive_renorm_snr', num2str(SNR)];
+save(nm1,'db')
+
+db2 = Hprepare_database2(src,feature_fun,opt,SNR);
+db2.features = single(db2.features);
+nm2=['mix',num2str(opt.cn),'db390_9class_negative_renorm_snr', num2str(SNR)];
+save(nm2,'db2')
+
+%%%%
+clear opt
+opt=struct();
+opt.parallel=1;
+opt.mix=1;%%%%%%%%%%%%%%%%%%
+opt.cn=[4,9];
+db = Hprepare_database(src,feature_fun,opt,SNR);
+db.features = single(db.features);
+db.cn=opt.cn;
+nm1=['mix',num2str(opt.cn),'db390_9classqn22_positive_renorm_snr', num2str(SNR)];
+save(nm1,'db')
+
+db2 = Hprepare_database2(src,feature_fun,opt,SNR);
+db2.features = single(db2.features);
+nm2=['mix',num2str(opt.cn),'db390_9class_negative_renorm_snr', num2str(SNR)];
+save(nm2,'db2')
+
+%}
