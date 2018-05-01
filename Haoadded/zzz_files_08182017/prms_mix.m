@@ -2,7 +2,7 @@
 
 C = 6; % # of classes, if mixture is C=1
 n = 2;
-q = 2;
+q = 1;
 N = 8e6; % input length, for LMdata2 N=2e7,LMdata3 N=2e6,LMdata4 N=8e6
 SNR = 20; 
 nfiles = 1; % how many files per class(pure signal), for LMdata2, nfile=10
