@@ -71,7 +71,9 @@ function db = Hprepare_database(src,feature_fun,opt,SNR)
             % flip
 %             x=ifft(flip(fft(x)));
             %adding noise    
-            x=awgn(x,SNR,'measured');
+            if SNR < 50
+                x=awgn(x,SNR,'measured');
+            end
             if opt.norm == 1                
                 x=x/norm(x);
             end
@@ -140,8 +142,10 @@ function db = Hprepare_database(src,feature_fun,opt,SNR)
 %             x=ifft(circshift(fx,length(fx)/4));
             % flip
 %             x=ifft(flip(fft(x)));
-            %adding noise            
-            x=awgn(x,SNR,'measured');
+            %adding noise          
+            if SNR < 50
+                x=awgn(x,SNR,'measured');
+            end
             if opt.norm == 1
                x=x/norm(x);
             end     

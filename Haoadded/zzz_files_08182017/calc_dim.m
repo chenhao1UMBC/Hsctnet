@@ -22,7 +22,7 @@ showfig = 0; % if show figures or not
 N = 8e6;
 for Wnum = 2
   T = round(N/Wnum);
-  for Q = 2 % this Q is for the first layer
+  for Q = 16 % this Q is for the first layer
     B = Q;
     sigma0 = 2/sqrt(3);
     phi_bw_multiplier = 1+(Q == 1);
@@ -53,7 +53,7 @@ for Wnum = 2
     filter1meta.xi_psi = xi_psi;
     filter1meta.phi_dirac = 0;
 
-    filter2meta.Q = 1; % The calculation of the second layer
+    filter2meta.Q = 0.05; % The calculation of the second layer
     filter2meta.B = filter2meta.Q;
     sigma0 = 2/sqrt(3);
     phi_bw_multiplier = 1+(filter2meta.Q == 1);
@@ -82,8 +82,9 @@ end
 featRow = featRow';
 featCol = featCol';
 featlen = featCol.*featRow;
-
-fprintf(['total rows of neg and pos are ', num2str(max(featRow, [], 2)*2), '\n'])
+fprintf(['The # first layer rows is ',num2str(length(psi_xi)), '\n'])
+fprintf(['The # second layer rows is ',num2str(length(psi_xi2)), '\n'])
+fprintf(['total rows of neg and pos are ', num2str(max(max(featRow))*2), '\n'])
 
 if showfig == 1
     figure
