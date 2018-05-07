@@ -9,16 +9,16 @@ SNR = 2000;
 nfiles = 1; % how many files per class(pure signal), for LMdata2, nfile=10
 L = 18e8; % per file lenght, for LMdata2, L=4e8, LMdata3, L=5e8, LMdta4, L=18e8
 nsamples = ((L-N)/(N/2)+1)*nfiles; % samples for the mixture signal
-% nsamples = 200; % specific number for mix sginal
+nmixsamples = 200; % specific number for mix sginal
 
 % scattering network settings
-opt.nsamples = nsamples; % =nsamples, or manually specify how many samples per file.
+opt.nsamples = nmixsamples; % =nsamples, or manually specify how many samples per file.
 opt.shift = N/2; % 50% overlaping
 opt.nfiles = nfiles;
 opt.norm = 1; % normalize data or not, 0 means not normalize data
 options.M = 2; % M layers
 opt.parallel = 1; % if parellel compute the data ********
-opt.mix = 0; % if processing the mixture data ***********
+opt.mix = 1; % if processing the mixture data ***********
 opt.save = 1; % save the result or not
 %     opt.sig_name = {'ambient','ble','bluetooth','fhss1_','fhss2_',...
 %     'wifi','wifi20mhz','wifi40mhz','zigbee'};

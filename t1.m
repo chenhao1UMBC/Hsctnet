@@ -17,12 +17,11 @@ load('wopfilters_q16&0.05n2_N8e6.mat')
 feature_fun = {@(x)(format_scat(scat(x,Wop)))};
 
 
-%%
-run savedata
+% run savedata
 
 opt.nsamples = 200;
 C = 1; 
 run creatsrc
-run allcombinations
-
+% run allcombinations
+run t2
 
