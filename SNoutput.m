@@ -12,5 +12,5 @@ run prms
 [Wop,fitlers] = wavelet_factory_1d(N, fparam, options);
 feature_fun = {@(x)(format_scat(log_scat(renorm_scat(scat(x,Wop)))))};
 
-% run savedata
+
 run savedata
