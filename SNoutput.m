@@ -5,8 +5,8 @@ clear
 close all
 tic
 
-addpath(genpath('/home/chenhao/Matlab/LMData4'));
-addpath(genpath('/home/chenhao/Matlab/LMSctNt'));
+% addpath(genpath('/home/chenhao/Matlab/LMData4'));
+addpath(genpath('/home/chenhao1/Matlab/Hsctnet'));
 run prms
 
 [Wop,fitlers] = wavelet_factory_1d(N, fparam, options);

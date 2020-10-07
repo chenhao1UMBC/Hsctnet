@@ -7,20 +7,26 @@
 %     run savedata    
 % end
 
-SNR = 20;
+% SNR = 20;
+% run savedata
+% 
+% SNR = 0;
+% run savedata
+% 
+% SNR = -5;
+% run savedata
+% 
+% SNR = -10;
+% run savedata
+% 
+% SNR = -20;
+% run savedata
+% 
+% SNR = -30;
+% run savedata
+
+SNR = 30;
 run savedata
 
-SNR = 0;
-run savedata
-
-SNR = -5;
-run savedata
-
-SNR = -10;
-run savedata
-
-SNR = -20;
-run savedata
-
-SNR = -30;
+SNR = 40;
 run savedata

@@ -10,11 +10,11 @@ opt.threshold1 = 5e8;
 opt.threshold2 = 1e3;
 opt.l1 = 8e6; % one time data reading total lenght, len(x)
 opt.l2 = 4e3; % output length
-opt.loverl = 2e3; % non-overlap length, 
+opt.loverl = 4e3; % non-overlap length, 4e3 means no overlap, 2e3 half
 opt.N_samples = 5000;
 
 filenames = {'bt', 'fhss1', 'fhss2', 'wifi1', };
-fn = filenames{4};
+fn = filenames{1};
 obj = matfile([fn, '_all.mat']);
 
 x = zeros(opt.l2, opt.N_samples);  % 5000 traning samples
